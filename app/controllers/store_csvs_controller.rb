@@ -11,10 +11,7 @@ class StoreCsvsController < ApplicationController
 
   def create
     if store_csv_params[:file]
-      CSV.foreach store_csv_params[:file].path, headers: true do |csv|
-        store_csv = StoreCsv.new name: csv['name'], number: csv['number'], date: csv['date'], description: csv['description']
-        store_csv.save!
-      end
+      StoreCsv.parse store_csv_params[:file]
 
       redirect_to store_csvs_path, notice: 'CSV uploaded'
     else
