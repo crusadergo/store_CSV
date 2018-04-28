@@ -1,0 +1,12 @@
+= form_for @store_csv do |f|
+  - if @store_csv.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@store_csv.errors.count, "error")} prohibited this store_csv from being saved:"
+      ul
+        - @store_csv.errors.full_messages.each do |message|
+          li = message
+
+  = f.file_field :file
+  br
+  br
+  .actions = f.submit 'Upload'
