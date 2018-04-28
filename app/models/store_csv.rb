@@ -1,0 +1,2 @@
+class StoreCsv < ApplicationRecord
+end
